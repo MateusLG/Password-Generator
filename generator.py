@@ -1,15 +1,16 @@
-import random
+from random import shuffle, choice
+
 import string
 
-characters = list(string.ascii_letters + string.digits + string.punctuation)
+CHARACTERS = list(string.ascii_letters + string.digits + string.punctuation)
 
-def genPass():
-    lenght = int(input("Pass lenght: "))
-    random.shuffle(characters)
+def genPass(characters=CHARACTERS, lenght=8):
+    """ Generate a password """
+    shuffle(characters)
 
     password = []
-    for i in range(lenght):
-        password.append(random.choice(characters))
+    for _ in range(lenght):
+        password.append(choice(characters))
 
-    random.shuffle(password)
-    print("".join(password))
+    shuffle(password)
+    return ''.join(password)
